@@ -16,11 +16,15 @@ var testJson = [
   }
 ];
 
-var testFunction = (view_id, testIndex) => {
-  console.log("Testing...");
+var renderBar_function = (view_id, dataIndex) => {
+  //Console log to ensure that the function is running.
+  console.log("Rendering new view...");
+  //Source variable that is set to the innerHTML of the specified <div> element.
   var source = document.querySelector(view_id).innerHTML;
+  //Template variable that utilizes Handlebars.js to compile a template for the source.
   var template = Handlebars.compile(source);
-  var html = template(testJson[testIndex]);
-
-  document.querySelector("#view_widget").innerHTML = html;
+  //HTML variable that will replace the innetHTML of the <div> element.
+  var html = template(testJson[dataIndex]);
+  //return value.
+  return html;
 }
