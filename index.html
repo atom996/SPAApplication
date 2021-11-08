@@ -20,11 +20,36 @@
   </head>
 
   <body>
-    <div>
-      <ul>
-        <li onclick="testFunction('#firstView',0)"><span>Hello Test</span></li>
-      </ul>
+
+    <div class="jumbotron bg-dark text-light text-center">
+      <h1>Assignment 03 - Quiz Application</h1>
+      <p>Before we begin, enter your name and select the type of quiz you plan on taking.</p>
+      <div class="row">
+
+        <div class="col-sm-4 form-group">
+          <label for="usr">Name:</label>
+          <input type="text" class="form-control" id="usr_name">
+        </div>
+
+        <div class="col-sm-4 pt-4">
+          <div class="dropdown">
+           <button type="button" class="btn btn-dark dropdown-toggle bg-dark text-light" data-toggle="dropdown">
+             Select the Quiz
+           </button>
+           <div class="dropdown-menu">
+             <a class="dropdown-item" href="#">True/False Quiz</a>
+             <a class="dropdown-item" href="#">Text Input Quiz</a>
+           </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4 pt-4">
+          <button type="button" class="btn btn-info btn-lg">Ready to start?</button>
+        </div>
+
+      </div>
     </div>
+
 
     <div id="view_widget">
     </div>
