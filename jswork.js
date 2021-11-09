@@ -11,9 +11,8 @@ async function fetch_question_data(link, placement) {
     const dataRetrieval = await fetch(link);
 
     const result = await dataRetrieval.json().then(function(questions) {
-      const questionReturn = questions[placement].question;
-      console.log(questionReturn);
-      return questionReturn;
+      console.log(questions[placement].question);
+      return questions[placement].question;
     });
 
     console.log(dataRetrieval);
@@ -22,31 +21,25 @@ async function fetch_question_data(link, placement) {
   }
 }
 
-async function fetch_answer_data(link, placement) {
-  try {
-    const dataRetrieval = await fetch(link);
-
-    const result = await dataRetrieval.json().then(function(answers) {
-      const answerReturn = answers[placement].answer;
-      console.log(answerReturn);
-      return answerReturn;
-    });
-
-    console.log(dataRetrieval);
-  } catch (err) {
-    console.error(err);
-  }
+function fetch_answer_data(link,placement) {
+    fetch('https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions').then(response => {
+      return response.json();
+    }).then( (data) => {
+      return data[placement].answer;
+    }).catch(
+      (err) => {
+        console.error(err);
+      }
+    )
 }
 
 function testFunc(){
-  //fetch_question_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",3);
-  const x = fetch_answer_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",3);
-  console.log(x);
+  renderBar_function("#firstTFQuestion", 0, "https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
 }
 
 
 //Renderer for Handlebars.js
-var renderBar_function = (view_id, dataIndex) => {
+var renderBar_function = (view_id, dataIndex, link) => {
   //Console log to ensure that the function is running.
   console.log("Rendering new view...");
   //Source variable that is set to the innerHTML of the specified <div> element.
@@ -54,7 +47,17 @@ var renderBar_function = (view_id, dataIndex) => {
   //Template variable that utilizes Handlebars.js to compile a template for the source.
   var template = Handlebars.compile(source);
   //HTML variable that will replace the innetHTML of the <div> element.
-  var html = template(testJson[dataIndex]);
+  //var html = template(testJson[dataIndex]);
+
+  fetch(link).then(response => {
+    return response.json();
+  }).then( (data) => {
+      var html = template({'quesOne' : data[dataIndex].question});
+      document.querySelector("#view_widget").innerHTML = html;
+  }).catch(
+    (err) => {
+      console.error(err);
+    }
+  )
   //return value.
-  return html;
 }
