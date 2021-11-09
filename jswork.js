@@ -13,6 +13,7 @@ async function fetch_question_data(link, placement) {
     const result = await dataRetrieval.json().then(function(questions) {
       const questionReturn = questions[placement].question;
       console.log(questionReturn);
+      return questionReturn;
     });
 
     console.log(dataRetrieval);
@@ -28,6 +29,7 @@ async function fetch_answer_data(link, placement) {
     const result = await dataRetrieval.json().then(function(answers) {
       const answerReturn = answers[placement].answer;
       console.log(answerReturn);
+      return answerReturn;
     });
 
     console.log(dataRetrieval);
@@ -37,8 +39,9 @@ async function fetch_answer_data(link, placement) {
 }
 
 function testFunc(){
-  fetch_question_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",0);
-  fetch_answer_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",0);
+  //fetch_question_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",3);
+  const x = fetch_answer_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",3);
+  console.log(x);
 }
 
 

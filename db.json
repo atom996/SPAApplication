@@ -29,7 +29,7 @@
     "textInputQuestions" : [
       {
         "question": "3 x 4 = ?",
-        "answer": "12",
+        "answer": 12,
         "answerTextFieldId": "user_answer_text"
       },
       {
