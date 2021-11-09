@@ -51,14 +51,27 @@
     </div>
 
     <!--HTML that will be changed with Handlebars js-->
-    <div id="view_widget">
+    <div class="row">
+      <div class="view col-sm-8 min-vh-100" style="background-image: url('https://static3.depositphotos.com/1007531/256/i/600/depositphotos_2561166-stock-photo-loose-leaf-notebook-paper.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; max-height: 100%";>
+        <div id="view_widget">
+        </div>
+      </div>
+      <div class="col-sm-4">
+      </div>
     </div>
 
     <!--Handlebars Scripts for Rendering-->
     <script id="firstTFQuestion" type="text/x-handlebars-template">
       <div>
-        <h4 class="card-title">Question 1: {{quesOne}}</h4>
-        
+        <h2 class="card-title text-center">Question 1: {{quesOne}}</h4>
+        <div class="row">
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-success btn-lg">True</button>
+          </div>
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-danger btn-lg">False</button>
+          </div>
+        </div>
       </div>
     </script>
 
