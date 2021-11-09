@@ -1,21 +1,48 @@
-var testJson = [
-  {
-    testOne: "Test1",
-    testTwo: "Test2",
-    testThree: "Test3"
-  },
-  {
-    testFour: "Test4",
-    testFive: "Test5",
-    testSix: "Test6"
-  },
-  {
-    testSeven: "Test7",
-    testEight: "Test8",
-    testNine: "Test9"
-  }
-];
 
+//DOMContentLoaded event listener, for loading in all of the events.
+document.addEventListener('DOMContentLoaded', () => {
+  // Set the state
+
+});
+
+//Asynchronous function that retireves the question data from the fake backend.
+async function fetch_question_data(link, placement) {
+  try {
+    const dataRetrieval = await fetch(link);
+
+    const result = await dataRetrieval.json().then(function(questions) {
+      const questionReturn = questions[placement].question;
+      console.log(questionReturn);
+    });
+
+    console.log(dataRetrieval);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function fetch_answer_data(link, placement) {
+  try {
+    const dataRetrieval = await fetch(link);
+
+    const result = await dataRetrieval.json().then(function(answers) {
+      const answerReturn = answers[placement].answer;
+      console.log(answerReturn);
+    });
+
+    console.log(dataRetrieval);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function testFunc(){
+  fetch_question_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",0);
+  fetch_answer_data("https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions",0);
+}
+
+
+//Renderer for Handlebars.js
 var renderBar_function = (view_id, dataIndex) => {
   //Console log to ensure that the function is running.
   console.log("Rendering new view...");

@@ -1,7 +1,7 @@
 {
   "trueFalseQuestions": [
     {
-      "question": "A triangle has three sides.",
+      "question": "A triangle has five sides.",
       "answer": "false",
       "options": ["true","false"]
     },
