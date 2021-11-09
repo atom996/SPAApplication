@@ -21,22 +21,19 @@ async function fetch_question_data(link, placement) {
   }
 }
 
-function fetch_answer_data(link,placement) {
-    fetch('https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions').then(response => {
-      return response.json();
-    }).then( (data) => {
-      return data[placement].answer;
-    }).catch(
-      (err) => {
-        console.error(err);
-      }
-    )
+function firstTFQuestInit(){
+  if(document.getElementById('dropSelect').value == 'opOne') {
+    renderBar_function("#firstTFQuestion", 0, "https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
+  } else if(document.getElementById('dropSelect').value == 'opTwo') {
+    renderBar_function("#firstTIQuestion", 0, "https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
+  } else {
+    alert('Please pick a quiz type!');
+  }
 }
 
-function testFunc(){
+function firstTIQuestInit(){
   renderBar_function("#firstTFQuestion", 0, "https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
 }
-
 
 //Renderer for Handlebars.js
 var renderBar_function = (view_id, dataIndex, link) => {

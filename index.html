@@ -32,19 +32,14 @@
         </div>
 
         <div class="col-sm-4 pt-4">
-          <div class="dropdown">
-           <button type="button" class="btn btn-dark dropdown-toggle bg-dark text-light" data-toggle="dropdown">
-             Select the Quiz
-           </button>
-           <div class="dropdown-menu">
-             <a class="dropdown-item" href="#">True/False Quiz</a>
-             <a class="dropdown-item" href="#">Text Input Quiz</a>
-           </div>
-          </div>
+          <select id="dropSelect" class="btn btn-dark dropdown-toggle bg-dark text-light">
+            <option value="opOne">True/False Quiz</option>
+            <option value="opTwo">Text Input Quiz</option>
+          </select>
         </div>
 
         <div class="col-sm-4 pt-4">
-          <button type="button" class="btn btn-info btn-lg" onclick="testFunc()"id="#startButton">Ready to start?</button>
+          <button type="button" class="btn btn-info btn-lg" onclick="firstTFQuestInit()"id="#startButton">Ready to start?</button>
         </div>
 
       </div>
@@ -52,11 +47,20 @@
 
     <!--HTML that will be changed with Handlebars js-->
     <div class="row">
-      <div class="view col-sm-8 min-vh-100" style="background-image: url('https://static3.depositphotos.com/1007531/256/i/600/depositphotos_2561166-stock-photo-loose-leaf-notebook-paper.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center; max-height: 100%";>
+      <div class="view col-sm-8">
         <div id="view_widget">
         </div>
       </div>
       <div class="col-sm-4">
+        <div class="card" style="width: 36rem;">
+          <div class="card-body">
+            <h5 class="card-title">Progress</h5>
+            <p class="card-text">This card on the right will track your progress on the quiz, you'll see how many questions have been completed. When you're ready, click the button above.</p>
+            <ul class="list-group list-group-flush" id="progressList">
+              <!--<li class="list-group-item">Sample</li>-->
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -70,6 +74,20 @@
           </div>
           <div class="col-sm-6 text-center">
             <button type="button" class="btn btn-danger btn-lg">False</button>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script id="firstTIQuestion" type="text/x-handlebars-template">
+      <div>
+        <h2 class="card-title text-center">Question 1: {{quesOne}}</h4>
+        <div class="row">
+          <div class="card-body text-center">
+            <div class="form-group">
+              <label for="usr">Input answer below:</label>
+              <input type="text" class="form-control">
+            </div>
           </div>
         </div>
       </div>
