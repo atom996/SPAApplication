@@ -12,21 +12,6 @@ const quizState = [
     questionsWrong: 0
   }
 ];
-//Asynchronous function that retireves the question data from the fake backend.
-async function fetch_question_data(link, placement) {
-  try {
-    const dataRetrieval = await fetch(link);
-
-    const result = await dataRetrieval.json().then(function(questions) {
-      console.log(questions[placement].question);
-      return questions[placement].question;
-    });
-
-    console.log(dataRetrieval);
-  } catch (err) {
-    console.error(err);
-  }
-}
 
 //Initializes the quizes based on the option selected from the dropdown
 function firstTFQuestInit(){
