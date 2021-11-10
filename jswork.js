@@ -1,3 +1,8 @@
+function getRandom(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+const complimentArray = ["Amazing","Well Done!","Incredible!","Fantastic"];
 
 const quizState = [
   {
@@ -69,15 +74,15 @@ function answerTrueReview() {
         quizState.questionsWrong += 1;
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
-        renderBar_function("#secondTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
+        renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
         var node = document.createElement('li');
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
       } else {
         quizState.questionsRight += 1;
         quizState.currentQuestion += 1;
-        document.getElementById("rightAnswerCount").innerHTML = `Questions Right: ${quizState.questionsWrong}`;
-        renderBar_function("#secondTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
+        document.getElementById("rightAnswerCount").innerHTML = `Questions Right: ${quizState.questionsRight}`;
+        renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
         var node = document.createElement('li');
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
@@ -97,7 +102,7 @@ function answerFalseReview() {
         quizState.questionsWrong += 1;
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
-        renderBar_function("#secondTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
+        renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
         var node = document.createElement('li');
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
@@ -105,7 +110,7 @@ function answerFalseReview() {
         quizState.questionsRight += 1;
         quizState.currentQuestion += 1;
         document.getElementById("rightAnswerCount").innerHTML = `Questions Right: ${quizState.questionsRight}`;
-        renderBar_function("#secondTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
+        renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
         var node = document.createElement('li');
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
@@ -131,7 +136,7 @@ var renderBar_function = (view_id, dataIndex, link) => {
   fetch(link).then(response => {
     return response.json();
   }).then( (data) => {
-      var html = template({'quesOne' : data[dataIndex].question});
+      var html = template({'quesOne' : data[dataIndex].question}, {'quesNum' : quizState.currentQuestion});
       document.querySelector("#view_widget").innerHTML = html;
   }).catch(
     (err) => {

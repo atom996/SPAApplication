@@ -69,7 +69,7 @@
     <!--Handlebars Scripts for Rendering-->
     <script id="firstTFQuestion" type="text/x-handlebars-template">
       <div>
-        <h2 class="card-title text-center">Question 1: {{quesOne}}</h4>
+        <h2 class="card-title text-center">Question {{quesNum}}: {{quesOne}}</h4>
         <div class="row">
           <div class="col-sm-6 text-center">
             <button type="button" class="btn btn-success btn-lg" onclick="answerTrueReview()">True</button>
@@ -86,10 +86,10 @@
         <h2 class="card-title text-center">Question 2: {{quesOne}}</h4>
         <div class="row">
           <div class="col-sm-6 text-center">
-            <button type="button" class="btn btn-success btn-lg" onclick="answerTrueReview()">True</button>
+            <button type="button" class="btn btn-success btn-lg" onclick="answerReview()">True</button>
           </div>
           <div class="col-sm-6 text-center">
-            <button type="button" class="btn btn-danger btn-lg" onclick="answerFalseReview()">False</button>
+            <button type="button" class="btn btn-danger btn-lg" onclick="answerReview()">False</button>
           </div>
         </div>
       </div>
