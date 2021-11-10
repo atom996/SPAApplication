@@ -168,3 +168,26 @@ var renderBar_function = (view_id, dataIndex, link) => {
   )
   //return value.
 }
+
+//renders the suggestions
+var renderSuggestion_function = (view_id, dataIndex, link) => {
+
+  console.log("Rendering new view...");
+
+  var source = document.querySelector(view_id).innerHTML;
+
+  var template = Handlebars.compile(source);
+
+
+  fetch(link).then(response => {
+    return response.json();
+  }).then( (data) => {
+      var html = template({'suggestQues' : data[dataIndex].question});
+      document.querySelector("#view_widget").innerHTML = html;
+  }).catch(
+    (err) => {
+      console.error(err);
+    }
+  )
+  //return value.
+}

@@ -50,8 +50,6 @@
       <div class="view col-sm-8">
         <div id="view_widget">
         </div>
-        <div id="suggestion_widget">
-        </div>
       </div>
       <div class="col-sm-4">
         <div class="card" style="width: 36rem;">
@@ -107,6 +105,20 @@
               <label for="usr">Input answer below:</label>
               <input type="text" class="form-control" id="textAns">
               <button type="button" class="btn btn-success btn-lg" onclick="answerTextReview()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script id="suggestId" type="text/x-handlebars-template">
+      <div>
+        <h2 class="card-title text-center">Some advice...</h2>
+        <div class="row">
+          <div class="card-body text-center">
+            <div class="form-group">
+              <p>{{suggestQues}}</p>
+              <button type="button" class="btn btn-info btn-lg text-light" onclick="answerTextReview()">Got it.</button>
             </div>
           </div>
         </div>

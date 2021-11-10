@@ -30,27 +30,27 @@
       {
         "question": "3 x 4 = ?",
         "answer": 12,
-        "answerTextFieldId": "4 + 4 = 8, 8 + 4 = 12."
+        "options": "4 + 4 = 8, 8 + 4 = 12."
       },
       {
         "question": "Fill in the blank: Today, I walked my ___ to the park.",
         "answer": "dog",
-        "answerTextFieldId": "People tend to walk their dogs at the park."
+        "options": "People tend to walk their dogs at the park."
       },
       {
         "question": "How many sides does a square have?",
         "answer": "4",
-        "answerTextFieldId": "A square has 4 sides."
+        "options": "A square has 4 sides."
       },
       {
         "question": "What state of matter is water usually in?",
         "answer": "liquid",
-        "answerTextFieldId": "Water is usually in its liquid state."
+        "options": "Water is usually in its liquid state."
       },
       {
         "question": "Is handing in work late worth doing?",
         "answer": "no",
-        "answerTextFieldId": "Self-explanatory."
+        "options": "Self-explanatory."
       }
     ]
 
