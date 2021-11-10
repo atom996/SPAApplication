@@ -58,6 +58,7 @@
             <p class="card-text">This card on the right will track your progress on the quiz, you'll see how many questions have been completed. When you're ready, click the button above.</p>
             <p style="color: green;" id="rightAnswerCount">Questions Right:</p>
             <p style="color: red;" id="wrongAnswerCount">Questions Wrong:</p>
+            <p style="color: purple;" id="goodMessage"></p>
             <ul class="list-group list-group-flush" id="progressList">
               <!--<li class="list-group-item">Sample</li>-->
             </ul>
@@ -69,7 +70,7 @@
     <!--Handlebars Scripts for Rendering-->
     <script id="firstTFQuestion" type="text/x-handlebars-template">
       <div>
-        <h2 class="card-title text-center">Question {{quesNum}}: {{quesOne}}</h4>
+        <h2 class="card-title text-center">Question {{quesNum}}: {{quesOne}}</h2>
         <div class="row">
           <div class="col-sm-6 text-center">
             <button type="button" class="btn btn-success btn-lg" onclick="answerTrueReview()">True</button>
@@ -83,7 +84,7 @@
 
     <script id="secondTFQuestion" type="text/x-handlebars-template">
       <div>
-        <h2 class="card-title text-center">Question 2: {{quesOne}}</h4>
+        <h2 class="card-title text-center">Question 2: {{quesOne}}</h2>
         <div class="row">
           <div class="col-sm-6 text-center">
             <button type="button" class="btn btn-success btn-lg" onclick="answerReview()">True</button>
@@ -97,12 +98,13 @@
 
     <script id="firstTIQuestion" type="text/x-handlebars-template">
       <div>
-        <h2 class="card-title text-center">Question 1: {{quesOne}}</h4>
+        <h2 class="card-title text-center">Question {{quesNum}}: {{quesOne}}</h2>
         <div class="row">
           <div class="card-body text-center">
             <div class="form-group">
               <label for="usr">Input answer below:</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" id="textAns">
+              <button type="button" class="btn btn-success btn-lg" onclick="answerTextReview()">Submit</button>
             </div>
           </div>
         </div>

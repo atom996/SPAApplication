@@ -1,5 +1,5 @@
-function getRandom(min, max) {
-  return Math.random() * (max - min) + min;
+function getRandom() {
+  return Math.floor(Math.random() * 4);
 }
 
 const complimentArray = ["Amazing","Well Done!","Incredible!","Fantastic"];
@@ -79,6 +79,7 @@ function answerTrueReview() {
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
       } else {
+        var ranum = getRandom();
         quizState.questionsRight += 1;
         quizState.currentQuestion += 1;
         document.getElementById("rightAnswerCount").innerHTML = `Questions Right: ${quizState.questionsRight}`;
@@ -86,6 +87,8 @@ function answerTrueReview() {
         var node = document.createElement('li');
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
+        document.getElementById('goodMessage').innerHTML = complimentArray[ranum];
+        setTimeout(() => {document.getElementById('goodMessage').innerHTML="";},1000);
       }
   }).catch(
     (err) => {
@@ -107,6 +110,7 @@ function answerFalseReview() {
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
       } else {
+        var ranum = getRandom();
         quizState.questionsRight += 1;
         quizState.currentQuestion += 1;
         document.getElementById("rightAnswerCount").innerHTML = `Questions Right: ${quizState.questionsRight}`;
@@ -114,6 +118,40 @@ function answerFalseReview() {
         var node = document.createElement('li');
         node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
         document.getElementById('progressList').appendChild(node);
+        document.getElementById('goodMessage').innerHTML = complimentArray[ranum];
+        setTimeout(() => {document.getElementById('goodMessage').innerHTML="";},1000);
+      }
+  }).catch(
+    (err) => {
+      console.error(err);
+    }
+  )
+}
+//Function for the Text Input Answers
+function answerTextReview() {
+  fetch("https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions").then(response => {
+    return response.json();
+  }).then( (data) => {
+      if(data[quizState.currentQuestion].answer != document.getElementById('textAns').value){
+        quizState.questionsWrong += 1;
+        quizState.currentQuestion += 1;
+        document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
+        renderBar_function("#firstTIQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
+        var node = document.createElement('li');
+        node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
+        document.getElementById('progressList').appendChild(node);
+        alert(data[quizState.currentQuestion].answer);
+      } else {
+        var ranum = getRandom();
+        quizState.questionsRight += 1;
+        quizState.currentQuestion += 1;
+        document.getElementById("rightAnswerCount").innerHTML = `Questions Right: ${quizState.questionsRight}`;
+        renderBar_function("#firstTIQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
+        var node = document.createElement('li');
+        node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
+        document.getElementById('progressList').appendChild(node);
+        document.getElementById('goodMessage').innerHTML = complimentArray[ranum];
+        setTimeout(() => {document.getElementById('goodMessage').innerHTML="";},1000);
       }
   }).catch(
     (err) => {
