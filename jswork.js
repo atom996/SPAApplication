@@ -59,10 +59,7 @@ function answerTrueReview() {
         quizState.questionsWrong += 1;
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
-        renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
-        var node = document.createElement('li');
-        node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
-        document.getElementById('progressList').appendChild(node);
+        renderSuggestion_function("#suggestIdTF",quizState.currentQuestion - 1, "https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
       } else {
         var ranum = getRandom();
         quizState.questionsRight += 1;
@@ -90,10 +87,7 @@ function answerFalseReview() {
         quizState.questionsWrong += 1;
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
-        renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
-        var node = document.createElement('li');
-        node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
-        document.getElementById('progressList').appendChild(node);
+        renderSuggestion_function("#suggestIdTF",quizState.currentQuestion - 1, "https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
       } else {
         var ranum = getRandom();
         quizState.questionsRight += 1;
@@ -121,11 +115,7 @@ function answerTextReview() {
         quizState.questionsWrong += 1;
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
-        renderBar_function("#firstTIQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
-        var node = document.createElement('li');
-        node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
-        document.getElementById('progressList').appendChild(node);
-        alert(data[quizState.currentQuestion].answer);
+        renderSuggestion_function("#suggestIdTI",quizState.currentQuestion - 1, "https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
       } else {
         var ranum = getRandom();
         quizState.questionsRight += 1;
@@ -144,7 +134,20 @@ function answerTextReview() {
     }
   )
 }
-//hello
+
+function continueTFFunction() {
+  renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
+  var node = document.createElement('li');
+  node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
+  document.getElementById('progressList').appendChild(node);
+}
+
+function continueTIFunction() {
+  renderBar_function("#firstTIQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
+  var node = document.createElement('li');
+  node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
+  document.getElementById('progressList').appendChild(node);
+}
 //Renderer for Handlebars.js
 var renderBar_function = (view_id, dataIndex, link) => {
   //Console log to ensure that the function is running.
@@ -182,7 +185,7 @@ var renderSuggestion_function = (view_id, dataIndex, link) => {
   fetch(link).then(response => {
     return response.json();
   }).then( (data) => {
-      var html = template({'suggestQues' : data[dataIndex].question});
+      var html = template({'suggestQues' : data[dataIndex].options});
       document.querySelector("#view_widget").innerHTML = html;
   }).catch(
     (err) => {

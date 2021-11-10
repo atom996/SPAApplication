@@ -111,14 +111,28 @@
       </div>
     </script>
 
-    <script id="suggestId" type="text/x-handlebars-template">
+    <script id="suggestIdTF" type="text/x-handlebars-template">
       <div>
         <h2 class="card-title text-center">Some advice...</h2>
         <div class="row">
           <div class="card-body text-center">
             <div class="form-group">
               <p>{{suggestQues}}</p>
-              <button type="button" class="btn btn-info btn-lg text-light" onclick="answerTextReview()">Got it.</button>
+              <button type="button" class="btn btn-info btn-lg text-light" onclick="continueTFFunction()">Got it.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script id="suggestIdTI" type="text/x-handlebars-template">
+      <div>
+        <h2 class="card-title text-center">Some advice...</h2>
+        <div class="row">
+          <div class="card-body text-center">
+            <div class="form-group">
+              <p>{{suggestQues}}</p>
+              <button type="button" class="btn btn-info btn-lg text-light" onclick="continueTIFunction()">Got it.</button>
             </div>
           </div>
         </div>
