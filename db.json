@@ -3,54 +3,54 @@
     {
       "question": "A triangle has five sides.",
       "answer": "false",
-      "options": ["true","false"]
+      "options": "Remember that a triangle has three sides, not five."
     },
     {
       "question": "A normal adult mouth contains 32 teeth, including the wisdom teeth.",
       "answer": "false",
-      "options": ["true","false"]
+      "options": "It is 32 teeth EXCLUDING the wisdom teeth."
     },
     {
       "question": "The Sun is a star.",
       "answer": "true",
-      "options": ["true","false"]
+      "options": "Remember, the sun is indeed a star."
     },
     {
       "question": "8 x 8 = 64",
       "answer": "true",
-      "options": ["true","false"]
+      "options": "8 x 8 is like doing 8 + 8 + 8 + 8 + 8 + 8 + 8 + 8. This will givce you 64."
     },
     {
       "question": "John Adams was the first US President.",
       "answer": "false",
-      "options": ["true","false"]
+      "options": "SECOND President."
     }
   ],
     "textInputQuestions" : [
       {
         "question": "3 x 4 = ?",
         "answer": 12,
-        "answerTextFieldId": "user_answer_text"
+        "answerTextFieldId": "4 + 4 = 8, 8 + 4 = 12."
       },
       {
         "question": "Fill in the blank: Today, I walked my ___ to the park.",
         "answer": "dog",
-        "answerTextFieldId": "user_answer_text"
+        "answerTextFieldId": "People tend to walk their dogs at the park."
       },
       {
         "question": "How many sides does a square have?",
         "answer": "4",
-        "answerTextFieldId": "user_answer_text"
+        "answerTextFieldId": "A square has 4 sides."
       },
       {
         "question": "What state of matter is water usually in?",
         "answer": "liquid",
-        "answerTextFieldId": "user_answer_text"
+        "answerTextFieldId": "Water is usually in its liquid state."
       },
       {
         "question": "Is handing in work late worth doing?",
         "answer": "no",
-        "answerTextFieldId": "user_answer_text"
+        "answerTextFieldId": "Self-explanatory."
       }
     ]
 
