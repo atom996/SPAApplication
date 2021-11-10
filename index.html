@@ -139,5 +139,37 @@
       </div>
     </script>
 
+    <script id="passedId" type="text/x-handlebars-template">
+      <div>
+        <h1 class="card-title text-center">Quiz complete!</h1>
+        <div class="row">
+          <div class="card-body text-center">
+            <div class="form-group">
+              <h2>Showing results:</h2>
+              <h3 style="color:green">You have gotten {{resultOne}} question(s) right.</h3>
+              <h3>Congratulations, you passed!</h3>
+              <p>Remember to select a quiz option and click the button again to retake the quiz!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script id="failedId" type="text/x-handlebars-template">
+      <div>
+        <h1 class="card-title text-center">Quiz complete!</h1>
+        <div class="row">
+          <div class="card-body text-center">
+            <div class="form-group">
+              <h2>Showing results:</h2>
+              <h3 style="color:red">You have gotten {{resultOne}} question(s) wrong.</h3>
+              <h3>Oh no, you failed!</h3>
+              <p>Remember to select a quiz option and click the button again to retake the quiz!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
   </body>
 </html>

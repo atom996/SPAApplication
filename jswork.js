@@ -60,7 +60,13 @@ function answerTrueReview() {
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
         renderSuggestion_function("#suggestIdTF",quizState.currentQuestion - 1, "https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
-      } else {
+      } else if (quizState.currentQuestion == 4){
+          if (quizState.questionsRight >= 4) {
+            renderPassed_function('#passedId');
+          } else {
+            renderFailed_function('#failedId');
+          }
+      }else {
         var ranum = getRandom();
         quizState.questionsRight += 1;
         quizState.currentQuestion += 1;
@@ -88,7 +94,13 @@ function answerFalseReview() {
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
         renderSuggestion_function("#suggestIdTF",quizState.currentQuestion - 1, "https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
-      } else {
+      } else if (quizState.currentQuestion == 4){
+          if (quizState.questionsRight >= 4) {
+            renderPassed_function('#passedId');
+          } else {
+            renderFailed_function('#failedId');
+          }
+      }else {
         var ranum = getRandom();
         quizState.questionsRight += 1;
         quizState.currentQuestion += 1;
@@ -116,7 +128,13 @@ function answerTextReview() {
         quizState.currentQuestion += 1;
         document.getElementById("wrongAnswerCount").innerHTML = `Questions Wrong: ${quizState.questionsWrong}`;
         renderSuggestion_function("#suggestIdTI",quizState.currentQuestion - 1, "https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
-      } else {
+      } else if (quizState.currentQuestion == 4){
+          if (quizState.questionsRight >= 4) {
+            renderPassed_function('#passedId');
+          } else {
+            renderFailed_function('#failedId');
+          }
+      }else {
         var ranum = getRandom();
         quizState.questionsRight += 1;
         quizState.currentQuestion += 1;
@@ -136,18 +154,35 @@ function answerTextReview() {
 }
 
 function continueTFFunction() {
-  renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
-  var node = document.createElement('li');
-  node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
-  document.getElementById('progressList').appendChild(node);
+  if (quizState.currentQuestion == 4){
+      if (quizState.questionsRight >= 4) {
+        renderPassed_function('#passedId');
+      } else{
+          renderFailed_function('#failedId');
+      }
+  } else {
+    renderBar_function("#firstTFQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/trueFalseQuestions");
+    var node = document.createElement('li');
+    node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
+    document.getElementById('progressList').appendChild(node);
+  }
 }
 
 function continueTIFunction() {
-  renderBar_function("#firstTIQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
-  var node = document.createElement('li');
-  node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
-  document.getElementById('progressList').appendChild(node);
+  if (quizState.currentQuestion == 4){
+      if (quizState.questionsRight >= 4) {
+        renderPassed_function('#passedId');
+      } else{
+          renderFailed_function('#failedId');
+      }
+  } else {
+    renderBar_function("#firstTIQuestion",quizState.currentQuestion,"https://my-json-server.typicode.com/atom996/SPAApplication/textInputQuestions");
+    var node = document.createElement('li');
+    node.appendChild(document.createTextNode(`Question ${quizState.currentQuestion + 1}`));
+    document.getElementById('progressList').appendChild(node);
+  }
 }
+
 //Renderer for Handlebars.js
 var renderBar_function = (view_id, dataIndex, link) => {
   //Console log to ensure that the function is running.
@@ -192,5 +227,36 @@ var renderSuggestion_function = (view_id, dataIndex, link) => {
       console.error(err);
     }
   )
+  //return value.
+}
+
+//rendering the completed quiz
+var renderFailed_function = (view_id) => {
+
+  console.log("Rendering new view...");
+
+  var source = document.querySelector(view_id).innerHTML;
+
+  var template = Handlebars.compile(source);
+
+  var html = template({'resultOne' : quizState.questionsWrong});
+
+  document.querySelector("#view_widget").innerHTML = html;
+
+  //return value.
+}
+
+var renderPassed_function = (view_id) => {
+
+  console.log("Rendering new view...");
+
+  var source = document.querySelector(view_id).innerHTML;
+
+  var template = Handlebars.compile(source);
+
+  var html = template({'resultOne' : quizState.questionsRight});
+
+  document.querySelector("#view_widget").innerHTML = html;
+
   //return value.
 }
