@@ -116,6 +116,7 @@ function answerFalseReview() {
     }
   )
 }
+//hello
 //Renderer for Handlebars.js
 var renderBar_function = (view_id, dataIndex, link) => {
   //Console log to ensure that the function is running.
